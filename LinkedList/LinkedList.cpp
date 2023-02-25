@@ -13,6 +13,21 @@ public:
 
 int main()
 {
+    LinkedList* head = new LinkedList;
+    LinkedList* node = new LinkedList;
+
+    head->value = 1;
+    head->next = node;
+
+    node->value = 2;
+    node->next = NULL;
+
+    while (head != NULL)
+    {
+        cout << head->value << endl;
+        head = head->next;
+    }
+
     cout << "Hello World!\n";
     return 0;
 }
