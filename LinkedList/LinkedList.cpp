@@ -8,11 +8,45 @@ class LinkedList {
 public:
     int value;
     LinkedList* next;
+
+    void printList(LinkedList* head) {
+        while (head != NULL) {
+            cout << head->value << endl;
+            head = head->next;
+        }
+    }
+
+    LinkedList* searchValue(LinkedList* head, int value) {
+        bool isFound = false;
+
+        while (isFound == false) { // going to iterate through every item in the list
+            // perform a check on the variable and if it matches the value break;
+
+
+            if (head == nullptr)
+            {
+                return nullptr;
+            }
+
+            else if (head->value == value) {
+                isFound = true;
+                cout << head << endl;
+                return head;
+            }
+
+
+            else {
+                head = head->next;
+            }
+
+        }
+    }
 };
 
 
 int main()
 {
+    /* Linked List Construction */
     LinkedList* head = new LinkedList;
     LinkedList* node = new LinkedList;
 
@@ -22,13 +56,12 @@ int main()
     node->value = 2;
     node->next = NULL;
 
-    while (head != NULL)
-    {
-        cout << head->value << endl;
-        head = head->next;
-    }
+    head->printList(head);
+    head->searchValue(head, 2);
 
-    cout << "Hello World!\n";
+    cout << head;
+    
+    cin.get();
     return 0;
 }
 
