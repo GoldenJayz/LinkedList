@@ -17,27 +17,15 @@ public:
     }
 
     LinkedList* searchValue(LinkedList* head, int value) {
-        bool isFound = false;
-
-        while (isFound == false) { // going to iterate through every item in the list
-            // perform a check on the variable and if it matches the value break;
-
-
+        while (true) { 
             if (head == nullptr)
-            {
                 return nullptr;
-            }
-
             else if (head->value == value) {
-                isFound = true;
                 cout << head << endl;
                 return head;
             }
-
-
-            else {
+            else
                 head = head->next;
-            }
 
         }
     }
