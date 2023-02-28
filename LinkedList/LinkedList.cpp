@@ -36,19 +36,14 @@ private:
     uint32_t length;
     LinkedList* head;
 
-public:
-
-    
+public: 
     Queue() {
         this->head = new LinkedList;
         this->length = 0;
-
         this->head->value = 1;
         this->head->next = new LinkedList;
         this->head->next->value = 2;
         this->head->next->next = NULL;
-
-
     }
 
     void getPosition() {
@@ -57,6 +52,7 @@ public:
 
     int getLength() {
         LinkedList* node = new LinkedList; // Store a copy of head so we do not set the actual head to something different
+        LinkedList* linkedListNodePtr = node;
         // Idk if that made a copy or stored the address to head
         int len = 0;
 
@@ -73,7 +69,7 @@ public:
 
         this->length = len;
 
-        delete node; // reclaim memory
+        delete linkedListNodePtr; // reclaim memory
         // Not sure if it is actually freeing the memory
 
         return this->length;
@@ -126,6 +122,8 @@ int main()
     cout << len2 << endl;
 
     // Checking if it frees the head's memory
+
+    delete queue;
 
     cin.get();
     return 0;
