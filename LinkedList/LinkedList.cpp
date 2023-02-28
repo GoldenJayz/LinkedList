@@ -31,6 +31,70 @@ public:
     }
 };
 
+class Queue {
+private:
+    uint32_t length;
+    LinkedList* head;
+
+public:
+
+    
+    Queue() {
+        this->head = new LinkedList;
+        this->length = 0;
+
+        this->head->value = 1;
+        this->head->next = new LinkedList;
+        this->head->next->value = 2;
+        this->head->next->next = NULL;
+
+
+    }
+
+    void getPosition() {
+
+    }
+
+    int getLength() {
+        LinkedList* node = new LinkedList; // Store a copy of head so we do not set the actual head to something different
+        // Idk if that made a copy or stored the address to head
+        int len = 0;
+
+        node->next = head->next; // Copying data
+        node->value = head->value;
+
+        cout << this->head << endl;
+        cout << node << endl;
+
+        while (node != NULL) {
+            len += 1;
+            node = node->next;
+        }
+
+        this->length = len;
+
+        delete node; // reclaim memory
+        // Not sure if it is actually freeing the memory
+
+        return this->length;
+    }
+
+    void appendToQueue() {
+        // Find the last element and add a pointer to a new linked list
+
+    }
+
+    void removeSelf() {
+
+    }
+
+    // Recalculate queue length when it is adjusted
+
+    ~Queue() {
+        delete head;
+    }
+};
+
 
 int main()
 {
@@ -47,19 +111,22 @@ int main()
     head->printList(head);
     head->searchValue(head, 2);
 
-    cout << head;
+    cout << head << endl;
     
+    delete node;
+    delete head;
+
+    Queue* queue = new Queue();
+
+    int len = queue->getLength();
+
+    cout << len << endl;
+
+    int len2 = queue->getLength();
+    cout << len2 << endl;
+
+    // Checking if it frees the head's memory
+
     cin.get();
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
